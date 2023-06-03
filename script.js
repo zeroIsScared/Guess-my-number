@@ -23,7 +23,11 @@ const resetGame =()=>{
     inputNumber.value = '';
     displayNumber.textContent = '?';
     bodyStyle.backgroundColor = 'black';
-    highscore.textContent = newScore;
+
+    if( highscore.textContent < newScore ){
+        highscore.textContent = newScore;
+    }
+   
     }
 
 console.log(number1);
@@ -38,7 +42,8 @@ const checkNumber =()=>{
 
         message.textContent= 'Correct Number!';
         bodyStyle.backgroundColor= 'green';
-        displayNumber.textContent = number1;
+        displayNumber.textContent = number1;        
+        highscore.textContent= score.textContent;
         console.log(1); 
 
     } else if (parseInt(inputNumber.value) < number1){
@@ -56,6 +61,10 @@ const checkNumber =()=>{
          newScore= parseInt(score.textContent)-1;
          score.textContent= newScore;
          console.log(3); 
+
+    } else if (!inputNumber.value){
+
+        message.textContent= 'Write a number!';
 
     }
 }
