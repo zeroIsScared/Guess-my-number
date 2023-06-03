@@ -26,43 +26,38 @@ const resetGame =()=>{
 
     if( highscore.textContent < newScore ){
         highscore.textContent = newScore;
-    }
-   
-    }
-
-console.log(number1);
-console.log(randomNumber());
-console.log(parseInt(inputNumber.value));
+    }   
+ }
 
 const checkNumber =()=>{
-    console.log(parseInt(inputNumber.value));
-    console.log(number1); 
+   
+    let insertedNumber = parseInt(inputNumber.value);
 
-    if (parseInt(inputNumber.value) === number1){
+    if (insertedNumber === number1){
 
         message.textContent= 'Correct Number!';
         bodyStyle.backgroundColor= 'green';
         displayNumber.textContent = number1;        
         highscore.textContent= score.textContent;
-        console.log(1); 
+        //console.log(1); 
 
-    } else if (parseInt(inputNumber.value) < number1){
+    } else if (insertedNumber < number1){
 
         message.textContent= 'Too low!';
         // minus score
         newScore= parseInt(score.textContent)-1;
         score.textContent= newScore;
-        console.log(2); 
+        //console.log(2); 
 
-    } else if (parseInt(inputNumber.value) > number1){
+    } else if (insertedNumber > number1){
 
         message.textContent= 'Too High!';
          // minus score
          newScore= parseInt(score.textContent)-1;
          score.textContent= newScore;
-         console.log(3); 
+         //console.log(3); 
 
-    } else if (!inputNumber.value){
+    } else if (!insertedNumber){
 
         message.textContent= 'Write a number!';
 
@@ -73,11 +68,3 @@ const checkNumber =()=>{
 btnAgain.addEventListener('click',resetGame)
 
 btnCheck.addEventListener('click',checkNumber);
-
-
-
-
-
-
-
-
