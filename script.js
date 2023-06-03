@@ -1,12 +1,12 @@
 'use strict';
 
-let message =document.querySelector('.message').textContent;
+let message =document.querySelector('.message');
 console.log(message); 
 let inputNumber = document.querySelector('.guess');
-let displayNumber = document.querySelector('.number').textContent;
-let score = document.querySelector('.score').textContent;
-let highscore = document.querySelector('.highscore').textContent;
-let backgroundColor = document.body.style.backgroungColor;
+let displayNumber = document.querySelector('.number');
+let score = document.querySelector('.score');
+let highscore = document.querySelector('.highscore');
+let bodyStyle= document.body.style;
 let number1= randomNumber();
 let newScore;
 let btnAgain= document.querySelector('.again');
@@ -18,12 +18,12 @@ function randomNumber () {
 
 const resetGame =()=>{
     number1= randomNumber();
-    message = 'Start guessing...';
-    score = '20';
+    message.textContent = 'Start guessing...';
+    score.textContent= '20';
     inputNumber.value = '';
-    displayNumber = '?';
-    backgroundColor = 'black';
-  
+    displayNumber.textContent = '?';
+    bodyStyle.backgroundColor = 'black';
+    highscore.textContent = newScore;
     }
 
 console.log(number1);
@@ -34,25 +34,28 @@ const checkNumber =()=>{
     console.log(parseInt(inputNumber.value));
     console.log(number1); 
 
-    if (parseInt(inputNumber.value) == number1){
+    if (parseInt(inputNumber.value) === number1){
 
-        message= 'Correct Number!';
-        backgroundColor= 'green';
-        displayNumber = number1;
+        message.textContent= 'Correct Number!';
+        bodyStyle.backgroundColor= 'green';
+        displayNumber.textContent = number1;
+        console.log(1); 
+
+    } else if (parseInt(inputNumber.value) < number1){
+
+        message.textContent= 'Too low!';
+        // minus score
+        newScore= parseInt(score.textContent)-1;
+        score.textContent= newScore;
+        console.log(2); 
 
     } else if (parseInt(inputNumber.value) > number1){
 
-        message= 'Too low!';
-        // minus score
-        newScore= parseInt(score)-1;
-        score= `${newScore}`;
-
-    } else {
-
-        message= 'Too High!';
+        message.textContent= 'Too High!';
          // minus score
-         newScore= parseInt(score)-1;
-         score= `${newScore}`;
+         newScore= parseInt(score.textContent)-1;
+         score.textContent= newScore;
+         console.log(3); 
 
     }
 }
